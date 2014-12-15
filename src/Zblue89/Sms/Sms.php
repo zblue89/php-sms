@@ -11,8 +11,10 @@ class Sms {
 		$url = $this->config ['url'];
 		$isDummy = $this->config ['isDummy'];
 		$logpath = $this->config ['logpath'];
+		$toLabel = $this->config ['to'];
+		$textLabel = $this->config ['text'];
 		$fields = $this->config ['params'];
-		$fields ['msisdn'] = $to;
+		$fields [$toLabel] = $to;
 		$text = \View::make ( "sms::$template" );
 		if ($params != null && is_array ( $params )) {
 			$keys = array ();
@@ -29,7 +31,7 @@ class Sms {
 		if (! empty ( $this->config ['postfix'] )) {
 			$text = $text . $this->config ['postfix'];
 		}
-		$fields ['text'] = urlencode ( $text );
+		$fields [$textLabel] = urlencode ( $text );
 		if ($isDummy) {
 			$log = '';
 			foreach ( $fields as $key => $value ) {

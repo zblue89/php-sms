@@ -5,6 +5,8 @@ return array (
 		'logpath'		=> '',
 		'prefix'		=> '',
 		'postfix'		=> '',
+		'to'			=> 'msisdn',
+		'text'			=> 'text',
 		'params'		=> array(
 			'username'		=> '',
 			'password'		=> '',
