@@ -49,6 +49,7 @@ class Sms {
 			
 			curl_setopt ( $ch, CURLOPT_URL, $url );
 			curl_setopt ( $ch, CURLOPT_POST, count ( $fields ) );
+			curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields_string );
 			curl_setopt ( $ch, CURLOPT_FOLLOWLOCATION, TRUE );
 			
