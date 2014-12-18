@@ -11,6 +11,7 @@ class Sms {
 		$url = $this->config ['url'];
 		$isDummy = $this->config ['isDummy'];
 		$logpath = $this->config ['logpath'];
+		$goodResponse = $this->config ['goodResponse'];
 		$toLabel = $this->config ['to'];
 		$textLabel = $this->config ['text'];
 		$fields = $this->config ['params'];
@@ -32,12 +33,14 @@ class Sms {
 			$text = $text . $this->config ['postfix'];
 		}
 		$fields [$textLabel] = urlencode ( $text );
+		$success = false;
 		if ($isDummy) {
 			$log = '';
 			foreach ( $fields as $key => $value ) {
 				$log .= $key . ': ' . $value . "\n";
 			}
 			file_put_contents ( app_path () . $logpath . "/" . date ( 'Ymd' ) . ".log", $log, FILE_APPEND );
+			$success = true;
 		} else {
 			$fields_string = '';
 			foreach ( $fields as $key => $value ) {
@@ -49,12 +52,18 @@ class Sms {
 			
 			curl_setopt ( $ch, CURLOPT_URL, $url );
 			curl_setopt ( $ch, CURLOPT_POST, count ( $fields ) );
-			curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, TRUE );
 			curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields_string );
 			curl_setopt ( $ch, CURLOPT_FOLLOWLOCATION, TRUE );
 			
 			$result = curl_exec ( $ch );
 			curl_close ( $ch );
+			if ($goodResponse != null && ! empty ( $goodResponse )) {
+				$success = $result == $goodResponse;
+			} else {
+				$success = true;
+			}
 		}
+		return $success;
 	}
 }
