@@ -1,23 +1,30 @@
 {
-    "name": "zblue89/sms",
-    "description": "",
-    "authors": [
-        {
-            "name": "zblue89",
-            "email": "zblue89@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
-    },
-    "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
-        "psr-0": {
-            "Zblue89\\Sms\\": "src/"
-        }
-    },
-    "minimum-stability": "stable"
+  "name": "zblue89/php-sms",
+  "description": "Using different SMS gateway to send SMS for different phone number format",
+  "keywords": [
+    "sms",
+    "laravel5"
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/container": "5.2.*",
+    "illuminate/contracts": "5.2.*",
+    "illuminate/support": "5.2.*",
+    "psr/log": "~1.0"
+  },
+  "authors": [
+    {
+      "name": "zblue89",
+      "email": "zblue89@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Tapway\\Sms": "src/"
+    }
+  },
+  "suggest": {
+    "twilio/sdk": "5.*",
+    "plivo/plivo-php": "^1.1"
+  }
 }
