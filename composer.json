@@ -7,9 +7,9 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "illuminate/container": "5.2.*",
-    "illuminate/contracts": "5.2.*",
-    "illuminate/support": "5.2.*",
+    "illuminate/container": ">=5.2.0",
+    "illuminate/contracts": ">=5.2.0",
+    "illuminate/support": ">=5.2.0",
     "psr/log": "~1.0"
   },
   "authors": [
@@ -20,7 +20,7 @@
   ],
   "autoload": {
     "psr-0": {
-      "Tapway\\Sms": "src/"
+      "Zblue89\\Sms": "src/"
     }
   },
   "suggest": {
